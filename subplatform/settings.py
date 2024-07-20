@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     
     'account',
+    'client',
+    'writer',
 ]
 
 
