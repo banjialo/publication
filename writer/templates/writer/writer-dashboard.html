@@ -4,8 +4,11 @@
 
 {% block content %}
 
-    <h1> Writer Dashboard </h1>
+    <div class="container bg-white shadow-md p-5 form-layout text-centre">
 
-    <a href="{% url 'user-logout' %}"> Logout </a>
+        <h5> ✍️ Welcome, {{user.first_name}} </h5>
+
+        
+    </div>
 
 {% endblock %}
