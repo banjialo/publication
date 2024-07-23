@@ -43,7 +43,14 @@ def my_articles(request):
 def update_article(request, pk):
     
     #retrieve the article ID
-    article = Article.objects.get(id=pk)
+    
+    try:
+        
+        article = Article.objects.get(id=pk, user=request.user)
+    
+    except:
+        
+        return redirect ('my-articles')
     
     #pass specific instance of the article
     form = ArticleForm(instance=article)
@@ -59,7 +66,26 @@ def update_article(request, pk):
     context = {'UpdateArticleForm' : form}    
     
     return render (request, 'writer/update-article.html', context)
-            
+
+
+@login_required(login_url='my-login')
+def delete_article(request, pk): 
+    
+    try:
+        
+        article = Article.objects.get(id=pk, user=request.user )      
+        
+    except:
+        
+        return redirect ('my-articles')
+    
+    if request.method == "POST":
+        
+        article.delete()
+        
+        return redirect ('my-articles')
+    
+    return render(request, 'writer/delete-article.html')
     
     
     
