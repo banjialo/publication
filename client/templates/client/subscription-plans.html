@@ -26,28 +26,27 @@
 
             <hr>
 
-            <div id="paypal-button-container-P-45U00852TM510101MM2RPQWA"></div>
-            <script src="https://www.paypal.com/sdk/js?client-id=AcxXn1XVdAT2uDWq1-cjuigZ2YWo2CqGWJdM30B9artXJ5z1-MfQjrgut8Kb0zr0vNNDjZOrc5iZZPx-&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+            <div id="paypal-button-container-P-2VL17839HB621822XM2UCZKQ"></div>
+            <script src="https://www.paypal.com/sdk/js?client-id=AZGBZuEnLVibql2s8X_fzU0GVWLaVSkO4poVJhHGIRLA9l902ZUrew3K0vDNw7TLcAQ7r8ooDruxGZvF&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
             <script>
-              paypal.Buttons({
-                  style: {
-                      shape: 'rect',
-                      color: 'silver',
-                      layout: 'vertical',
-                      label: 'subscribe'
-                  },
-                  createSubscription: function(data, actions) {
+            paypal.Buttons({
+                style: {
+                    shape: 'rect',
+                    color: 'silver',
+                    layout: 'vertical',
+                    label: 'subscribe'
+                },
+                createSubscription: function(data, actions) {
                     return actions.subscription.create({
-                      /* Creates the subscription */
-                      plan_id: 'P-45U00852TM510101MM2RPQWA'
+                    /* Creates the subscription */
+                    plan_id: 'P-2VL17839HB621822XM2UCZKQ'
                     });
-                  },
-                  onApprove: function(data, actions) {
+                },
+                onApprove: function(data, actions) {
                     alert(data.subscriptionID); // You can add optional success message for the subscriber here
-                  }
-              }).render('#paypal-button-container-P-45U00852TM510101MM2RPQWA'); // Renders the PayPal button
+                }
+            }).render('#paypal-button-container-P-2VL17839HB621822XM2UCZKQ'); // Renders the PayPal button
             </script>
-
         </div>
 
         <!-- Premium plan logic (PayPal)-->
@@ -64,8 +63,7 @@
 
             <hr>
 
-            <div id="paypal-button-container-P-8TW53181FS4233420M2RQE5I"></div>
-         
+            <div id="paypal-button-container-P-3VW10193G80418649M2UC24Y"></div>
             <script>
             paypal.Buttons({
                 style: {
@@ -77,13 +75,13 @@
                 createSubscription: function(data, actions) {
                     return actions.subscription.create({
                     /* Creates the subscription */
-                    plan_id: 'P-8TW53181FS4233420M2RQE5I'
+                    plan_id: 'P-3VW10193G80418649M2UC24Y'
                     });
                 },
                 onApprove: function(data, actions) {
                     alert(data.subscriptionID); // You can add optional success message for the subscriber here
                 }
-            }).render('#paypal-button-container-P-8TW53181FS4233420M2RQE5I'); // Renders the PayPal button
+            }).render('#paypal-button-container-P-3VW10193G80418649M2UC24Y'); // Renders the PayPal button
             </script>
 
         </div>
@@ -93,5 +91,5 @@
     <br>
 
 
-
 {% endblock %}
+
