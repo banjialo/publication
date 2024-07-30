@@ -59,3 +59,8 @@ def subscription_locked (request):
 @login_required(login_url='my-login')
 def subscription_plans (request):
     return render (request, 'client/subscription-plans.html')
+
+#Create a subscription view
+@login_required(login_url='my-login')
+def account_management (request):
+    return render (request, 'client/account-management.html')
