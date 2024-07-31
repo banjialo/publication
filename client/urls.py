@@ -10,6 +10,10 @@ urlpatterns = [
     
     path('account-management-2', views.account_management, name="account-management-2"),    
     
+    
+    #Subscription URLs
     path('create-subscription/<subID>/<plan>', views.create_subscription, name="create-subscription"),    
+    
+    path('delete-subscription/<subID>', views.delete_subscription, name="delete-subscription"),    
     
 ]

@@ -144,3 +144,10 @@ def create_subscription(request, subID, plan):
         context = {'SubscriptionPlan': selected_sub_plan}
 
         return render(request, 'client/create-subscription.html', context)
+    
+
+#delete subscription     
+@login_required(login_url='my-login')
+def delete_subscription(request, subID):
+     
+     return render (request, 'client/delete-subscription.html')
