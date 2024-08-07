@@ -8,6 +8,11 @@ from . models import Subscription
 
 from account.models import CustomUser
 
+#Import PayPal functions
+
+from . paypal import *
+
+
 # Create your views here.
 
 """ @login_required(login_url='my-login')
@@ -86,7 +91,18 @@ def subscription_plans (request):
 #Create a subscription view
 @login_required(login_url='my-login')
 def account_management (request):
-    return render (request, 'client/account-management.html')
+    
+    try:
+        
+        subDetails = Subscription.objects.get(user=request.user)
+        subscription_id = subDetails.paypal_subscription_id
+        context = {'SubscriptionID' : subscription_id}
+        
+        return render (request, 'client/account-management.html', context)
+    
+    except:
+        
+        return render (request, 'client/account-management.html')
 
 """ 
 @login_required(login_url='my-login')
@@ -149,5 +165,17 @@ def create_subscription(request, subID, plan):
 #delete subscription     
 @login_required(login_url='my-login')
 def delete_subscription(request, subID):
-     
-     return render (request, 'client/delete-subscription.html')
+    
+    #Delete subscription from PayPal
+    
+    access_token = get_access_token()
+    
+    cancel_subscription_paypal(access_token, subID)
+    
+    #delete a subscription from Django -- app side
+    
+    subscription = Subscription.objects.get(user=request.user, paypal_subscription_id = subID)
+    
+    subscription.delete()
+    
+    return render (request, 'client/delete-subscription.html')
